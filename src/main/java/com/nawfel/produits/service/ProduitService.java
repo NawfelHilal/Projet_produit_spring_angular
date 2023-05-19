@@ -2,6 +2,7 @@ package com.nawfel.produits.service;
 
 import java.util.List;
 
+import com.nawfel.produits.dto.ProduitDTO;
 import com.nawfel.produits.entities.Categorie;
 import com.nawfel.produits.entities.Produit;
 
@@ -19,4 +20,6 @@ public interface ProduitService {
 	List<Produit> findByCategorieIdCat(Long id);
 	List<Produit> findByOrderByNomProduitAsc();
 	List<Produit> trierProduitsNomsPrix();
+	
+	ProduitDTO convertEntityToDto(Produit p);
 }

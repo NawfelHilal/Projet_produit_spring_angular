@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.nawfel.produits.dto.ProduitDTO;
 import com.nawfel.produits.entities.Categorie;
 import com.nawfel.produits.entities.Produit;
 import com.nawfel.produits.repos.ProduitRepository;
@@ -80,6 +81,24 @@ public class ProduitServiceImpl implements ProduitService{
 	@Override
 	public List<Produit> trierProduitsNomsPrix() {
 		return produitRepository.trierProduitsNomsPrix();
+	}
+
+	@Override
+	public ProduitDTO convertEntityToDto(Produit p) {
+		/*ProduitDTO produitDTO = new ProduitDTO();
+		produitDTO.setIdProduit((p.getIdProduit()));
+		produitDTO.setNomProduit(p.getNomProduit());
+		produitDTO.setPrixProduit(p.getPrixProduit());
+		produitDTO.setCategorie(p.getCategorie());
+		
+		return produitDTO;*/
+		
+		return ProduitDTO.builder()
+				.idProduit(p.getIdProduit())
+				.nomProduit(p.getNomProduit())
+				.prixProduit(p.getPrixProduit())
+				.categorie(p.getCategorie())
+				.build();
 	}
 	
 
