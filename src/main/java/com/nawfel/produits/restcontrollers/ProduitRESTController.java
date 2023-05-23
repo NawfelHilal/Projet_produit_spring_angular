@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import com.nawfel.produits.dto.ProduitDTO;
 import com.nawfel.produits.entities.Produit;
 import com.nawfel.produits.service.ProduitService;
 
@@ -16,27 +18,27 @@ public class ProduitRESTController {
 	ProduitService produitService;
 	
 	@GetMapping
-	List<Produit> getAllProduits()
+	List<ProduitDTO> getAllProduits()
 	{
 		return produitService.getAllProduits();
 	}
 	
 	@GetMapping("/{id}")
-	public Produit getProduitById(@PathVariable("id") Long id) 
+	public ProduitDTO getProduitById(@PathVariable("id") Long id) 
 	{
 		return produitService.getProduit(id);
 	}
 	
 	@PostMapping
-	public Produit createProduit(@RequestBody Produit produit) 
+	public ProduitDTO createProduit(@RequestBody ProduitDTO produitDTO) 
 	{
-		return produitService.saveProduit(produit);
+		return produitService.saveProduit(produitDTO);
 	}
 
 	@PutMapping
-	public Produit updateProduit(@RequestBody Produit produit) 
+	public ProduitDTO updateProduit(@RequestBody ProduitDTO produitDTO) 
 	{
-		return produitService.updateProduit(produit);
+		return produitService.updateProduit(produitDTO);
 	}
 	
 	@DeleteMapping("/{id}")
